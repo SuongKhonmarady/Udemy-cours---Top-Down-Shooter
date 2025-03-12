@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
 
         speed = walkSpeed;
 
-
         AssignInputEverts();
     }
 
