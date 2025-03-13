@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public PlayerControls controls;
+    public PlayerControls controls { get; private set; }
+    public PlayerAim aim { get; private set;} //get; private set mean : read-only
+    public PlayerMovement movement { get; private set; }
 
     private void Awake()
     {
         controls = new PlayerControls();
+        aim = GetComponent<PlayerAim>();
+        movement = GetComponent<PlayerMovement>();
+         
     }
     private void OnEnable()
     {
