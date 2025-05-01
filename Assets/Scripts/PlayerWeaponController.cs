@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
+    private const float REFERENCE_BULLET_SPEED = 20;
+    //This is a defefault speed from which our mass formula is derived.
+
     private Player player;
 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private Transform gunPoint;
 
+    
 
     [SerializeField] private Transform weaponHolder;
 
@@ -24,7 +28,10 @@ public class PlayerWeaponController : MonoBehaviour
         GameObject newBullet =
             Instantiate(bulletPrefab, gunPoint.position, Quaternion.LookRotation(gunPoint.forward));
 
-        newBullet.GetComponent<Rigidbody>().velocity = BulletDirection() * bulletSpeed;
+        Rigidbody rbNewBullet = newBullet.GetComponent<Rigidbody>();
+
+        rbNewBullet.mass = REFERENCE_BULLET_SPEED / bulletSpeed;
+        rbNewBullet.velocity = BulletDirection() * bulletSpeed;
 
         Destroy(newBullet, 10);
 

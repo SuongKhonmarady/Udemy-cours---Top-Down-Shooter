@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 7589200021405512164}
   - component: {fileID: 8840245876566684152}
   - component: {fileID: 1966822867879648422}
-  - component: {fileID: 4337824777518767873}
-  - component: {fileID: 5088994571606599680}
   - component: {fileID: 933053829434901963}
   m_Layer: 0
   m_Name: road_block_concrete
@@ -108,45 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.591955, y: 0.14369553, z: 0.5543268}
   m_Center: {x: 0.000013589859, y: 0.06824508, z: 0}
---- !u!54 &4337824777518767873
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2703702003182223523}
-  serializedVersion: 4
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &5088994571606599680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2703702003182223523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f054205f1b8644640b67eaa127024087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &933053829434901963
 BoxCollider:
   m_ObjectHideFlags: 0
