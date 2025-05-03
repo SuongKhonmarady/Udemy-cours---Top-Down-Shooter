@@ -30,4 +30,6 @@ public class PlyerAnimationEven : MonoBehaviour
     {
         visualController.SetBusyGrabbingWeaponTo(false);
     }
+
+    public void SwitchOnWeaponModel() => visualController.SwitchOnCurrentWeaponModel();
 }

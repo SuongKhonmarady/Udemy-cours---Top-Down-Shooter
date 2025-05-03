@@ -16,7 +16,7 @@ public class PlayerWeaponController : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private Transform gunPoint;
 
-    
+
 
     [SerializeField] private Transform weaponHolder;
 
@@ -30,14 +30,17 @@ public class PlayerWeaponController : MonoBehaviour
         player = GetComponent<Player>();
         AssignInputEvents();
 
-        currentWeapon.bulletsInMagazine = currentWeapon.totalReserveAmmo;
+        Invoke("EquipStartingWeapon", .1f);
     }
 
 
     #region Slots management - pickup\Equip\Drop
+
+    private void EquipStartingWeapon() => EquipWeapon(0);
     private void EquipWeapon(int i)
     {
         currentWeapon = weaponSlots[i];
+        player.weaponVisuals.PlayWeaponEquipAnimation();
     }
 
     public void PickupWeapon(Weapon newWeapon)
@@ -50,19 +53,20 @@ public class PlayerWeaponController : MonoBehaviour
         }
 
         weaponSlots.Add(newWeapon);
+        player.weaponVisuals.SwitchOnBackupWeaponModel();
         
     }
 
     private void DropWeapon()
     {
-        if (weaponSlots.Count <= 1)
+        if(HaveOnlyOneWeapon())
             return;
 
         weaponSlots.Remove(currentWeapon);
-
-        currentWeapon = weaponSlots[0];
+        EquipWeapon(0);
     }
     #endregion
+
 
 
     private void Shoot()
@@ -101,7 +105,21 @@ public class PlayerWeaponController : MonoBehaviour
         return direction;
     }
 
+    public bool HaveOnlyOneWeapon() => weaponSlots.Count <= 1;
+
     public Weapon CurrentWeapon() => currentWeapon;
+
+    public Weapon BackupWeapon()
+    {
+        foreach (Weapon weapon in weaponSlots)
+        {
+            if (weapon != currentWeapon)
+                return weapon;
+        }
+
+        return null;
+    }
+
     public Transform GunPoint() => gunPoint;
 
     #region Input Events
